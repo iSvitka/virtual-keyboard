@@ -184,14 +184,26 @@ keys.forEach((key) => {
     if (key.classList[1] === 'CapsLock') {
       if (key.classList[2] !== 'active') {
         key.classList.add('active');
-        currentCase = chooseCase(currentCase, 'caps', lang);
+        if (currentCase === 'caseDown') {
+          currentCase = chooseCase(currentCase, 'caps', lang);
+        } else if (currentCase === 'caseUp') {
+          currentCase = chooseCase(currentCase, 'shiftCaps', lang);
+        }
       } else {
         key.classList.remove('active');
-        currentCase = chooseCase(currentCase, 'caseDown', lang);
+        if (currentCase === 'caps') {
+          currentCase = chooseCase(currentCase, 'caseDown', lang);
+        } else if (currentCase === 'shiftCaps') {
+          currentCase = chooseCase(currentCase, 'caseUp', lang);
+        }
       }
     } else if (key.classList[1] === 'ShiftLeft' || key.classList[1] === 'ShiftRight') {
       key.classList.add('active');
-      currentCase = chooseCase(currentCase, 'caseUp', lang);
+      if (currentCase === 'caseDown') {
+        currentCase = chooseCase(currentCase, 'caseUp', lang);
+      } else if (currentCase === 'caps') {
+        currentCase = chooseCase(currentCase, 'shiftCaps', lang);
+      }
     } else {
       key.classList.add('active');
     }
@@ -261,7 +273,7 @@ document.addEventListener('mouseup', () => {
     }
   }
   if (currentCase === 'shiftCaps') {
-    currentCase = chooseCase(currentCase, 'caps', lang);
+    currentCase = chooseCase(currentCase, 'shiftCaps', lang);
   }
 });
 
