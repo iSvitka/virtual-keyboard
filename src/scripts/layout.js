@@ -1,4 +1,4 @@
-export const addBasicLayout = () => {
+export function addBasicLayout() {
   const keyboardKeys = [
     // ROW 1
 
@@ -1014,9 +1014,6 @@ export const addBasicLayout = () => {
       case 5:
         amountOfChars = 9;
         break;
-      default:
-        amountOfChars = 14;
-        break;
     }
 
     for (let j = 1; j <= amountOfChars; j += 1) {
@@ -1091,6 +1088,4 @@ export const addBasicLayout = () => {
 
     key.classList.add(keys[index].code);
   });
-};
-
-export default addBasicLayout();
+}

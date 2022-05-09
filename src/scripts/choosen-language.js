@@ -1,4 +1,4 @@
-const choosenLanguage = (language = 'en') => {
+export function choosenLanguage(language = 'en') {
   if (language === 'en') {
     const keys = document.querySelectorAll('.keyboard-key');
     keys.forEach((key) => {
@@ -30,6 +30,4 @@ const choosenLanguage = (language = 'en') => {
   }
 
   return language;
-};
-
-export default choosenLanguage;
+}

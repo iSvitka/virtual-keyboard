@@ -1,5 +1,4 @@
-const chooseCase = (choosenCase, currentLang, currentCase = 'caseDown') => {
-  let alt = false;
+export function chooseCase(currentCase = 'caseDown', choosenCase, currentLang) {
   const keys = document.querySelectorAll('.keyboard-key');
   keys.forEach((key) => {
     const caseDown = key.querySelector(`.${currentLang}`).querySelector('.caseDown');
@@ -9,7 +8,7 @@ const chooseCase = (choosenCase, currentLang, currentCase = 'caseDown') => {
 
     if (choosenCase === 'caseUp') {
       if (currentCase === 'caps') {
-        alt = true;
+        choosenCase === 'shiftCaps';
       } else {
         caseDown.classList.add('hidden');
         shiftCaps.classList.add('hidden');
@@ -18,14 +17,14 @@ const chooseCase = (choosenCase, currentLang, currentCase = 'caseDown') => {
     }
     if (choosenCase === 'caps') {
       if (currentCase === 'caseUp') {
-        alt = true;
+        choosenCase === 'shiftCaps';
       } else {
         caseDown.classList.add('hidden');
         shiftCaps.classList.add('hidden');
         caps.classList.remove('hidden');
       }
     }
-    if (choosenCase === 'shiftCaps' || alt === true) {
+    if (choosenCase === 'shiftCaps') {
       caseDown.classList.add('hidden');
       caseUp.classList.add('hidden');
       caps.classList.add('hidden');
@@ -44,6 +43,4 @@ const chooseCase = (choosenCase, currentLang, currentCase = 'caseDown') => {
     }
   });
   return choosenCase;
-};
-
-export default chooseCase;
+}
